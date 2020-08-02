@@ -1,0 +1,86 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+
+
+<title> Transfer to someone</title>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<h3> Operations</h3>
+<hr>
+<p class="h4 mb-4"> Transfer to someone</p>
+
+	
+	
+
+	
+	
+
+	<form actions="#" th:action="@{/toSomeoneTwo(clientId=${theId})}"  
+					th:object="${temp}" method="POST">
+					
+		<div class="col-lg-3" th:object="${test}">
+    <select class="form-control" id="testOrder" name="testOrder">
+        <option value="">From</option>
+        <option th:each="list : ${list}"
+                th:value="${list.id}"
+                th:text="'id: ' + ${list.id} + ' money: ' +${list.money}"></option>
+    </select>
+</div>
+
+<br>
+<br>
+
+		<div class="col-lg-3" th:object="${test}">
+    <select class="form-control" id="testOrder2" name="testOrder2">
+        <option value="">To</option>
+        <option th:each="list : ${list2}"
+                th:value="${list.id}"
+                th:text="'id: ' + ${list.id} "></option>
+    </select>
+</div>
+		
+			<div class="col-lg-3" th:object="${temp}">
+					Amount of money
+				<input type="text" th:field="*{money}"	
+				class="form-control mb-3 col-4" placeholder="Amount">
+				
+				</div>
+				
+				<button type="submit" class="btn btn-info col-2"> Commit transaction</button>
+					
+		
+				</form>
+				
+					<br>
+					<br>
+				<a	th:href="@{/show}"
+class="btn btn-link">
+	Return to Clients list
+	</a>
+
+</div>
+
+
+
+
+
+
+</body>
+</html>

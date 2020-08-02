@@ -1,0 +1,75 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+
+
+<title> Transfer between your accounts</title>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<h3> Transfer between your accounts</h3>
+<hr>
+
+
+
+<form actions="#" th:action="@{/betweenAcc(clientId=${theId})}"  
+					th:object="${acc}" method="POST">
+					
+		<div class="col-lg-3" th:object="${test}">
+    <select class="form-control" id="testOrder" name="testOrder">
+        <option value="">From</option>
+        <option th:each="list : ${list}"
+                th:value="${list.id}"
+                th:text="'id: ' + ${list.id} + ' money: ' +${list.money}"></option>
+    </select>
+</div>
+
+<br>
+<br>
+
+<div class="col-lg-3" th:object="${test}">
+    <select class="form-control" id="testOrder2" name="testOrder2">
+        <option value="">To</option>
+        <option th:each="list : ${list}"
+                th:value="${list.id}"
+                th:text="'id : ' + ${list.id} + ' money: ' +${list.money}"></option>
+    </select>
+			
+			</div>				
+						
+						
+						
+					<br>	
+		
+					
+				<input type="text" th:field="*{money}"	
+				class="form-control mb-3 col-4" placeholder="Money">
+				
+				
+				<button type="submit" class="btn btn-info col-2"> Commit transaction</button>
+
+
+
+</form>
+
+
+
+
+
+</body>
+</html>
